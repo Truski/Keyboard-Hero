@@ -40,7 +40,8 @@ public class KeyboardHero extends ApplicationAdapter implements InputProcessor {
 	
 	@Override
 	public void create () {
-		music = Gdx.audio.newMusic(new FileHandle("songs/demo.mp3"));
+		music = Gdx.audio.newMusic(Gdx.files.internal("songs/demo.mp3"));
+
 		try {
 			fileWriter = new FileWriter(new File("songs/kda.khb"));
 		} catch (Exception e) {

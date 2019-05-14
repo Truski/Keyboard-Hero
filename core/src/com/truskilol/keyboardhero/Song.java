@@ -1,8 +1,9 @@
 package com.truskilol.keyboardhero;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
+
+import java.io.*;
 import java.util.ArrayList;
 
 public class Song {
@@ -12,8 +13,9 @@ public class Song {
     public Song (String song_name) {
         notes = new ArrayList<Note>();
         try {
-            File file = new File("songs/" + song_name + ".khb");
-            BufferedReader reader = new BufferedReader(new FileReader(file));
+            InputStream inputStream = Gdx.files.internal("songs/" + song_name + ".khb").read();
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             String line;
             while((line = reader.readLine()) != null) {
                 String[] tokens = line.split(",");
